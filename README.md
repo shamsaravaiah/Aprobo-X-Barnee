@@ -1,4 +1,4 @@
-# Aprobo × Barnee  
+# Aprobo × Barnee  ok
 
 This chatbot enables **Aprobo** to deliver accurate, fast, and reliable answers to product, construction, and technical-related questions. It is powered by Barnee’s RAG + Generative AI system, designed to meet strict internal success metrics.  
 

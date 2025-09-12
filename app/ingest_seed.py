@@ -5,8 +5,11 @@ import os, glob, json, hashlib
 from typing import List, Dict, Any, Tuple
 
 from chromadb import PersistentClient
+from dotenv import load_dotenv
 from chromadb.config import Settings
-from app.embed_openai import embed_texts
+from embed_openai import embed_texts
+
+load_dotenv()
 
 CHROMA_DIR      = os.getenv("CHROMA_DIR", "./vectorstore/aprobo_v1")
 SEED_GLOB       = os.getenv("SEED_GLOB", "data/*.jsonl")

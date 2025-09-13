@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
-from qa import answer_question
+from app.qa import answer_question
 
 app = FastAPI(title="Aprobo QA API")
 

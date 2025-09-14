@@ -7,15 +7,21 @@ from app.qa import answer_question, retrieve  # uses your existing code
 
 app = FastAPI(title="Aprobo QA (local)")
 
+import os
 
+# Comma-separated string from env
+allowed_raw = os.getenv(
+    "ALLOWED_ORIGINS",
+    "https://aprobo-chat-buddy.lovable.app,https://id-preview--a79b81c8-b9da-4acc-abb4-5e6bb7dbc57a.lovable.app"
+)
 
-allowed = os.getenv("ALLOWED_ORIGINS", "https://aprobo-chat-buddy.lovable.app/")
-origins = [o.strip() for o in allowed.split(",") if o.strip()]
+# Split into list
+allowed = [o.strip() for o in allowed_raw.split(",") if o.strip()]
 
 # CORS for quick local testing (adjust origins as needed)
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=origins if origins else ["*"],  # use specific origins in prod
+    allow_origins=allowed,  # use specific origins in prod
     allow_credentials=True,                        # set to False if you don’t need cookies/auth
     allow_methods=["GET", "POST", "OPTIONS"],
     allow_headers=["Authorization", "Content-Type", "*"],
